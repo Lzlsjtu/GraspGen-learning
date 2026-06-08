@@ -4,6 +4,25 @@
 
 ---
 
+## ⚠️ 大文件说明（未上传至 GitHub）
+
+以下文件因体积过大或可重新生成，**未包含在 GitHub 仓库中**，需单独下载或生成：
+
+| 文件/目录 | 大小 | 获取方式 |
+|-----------|------|----------|
+| `GraspGen_datasets/` | ~23 GB | `git clone https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-GraspGen` |
+| `GraspGen/GraspGenModels/` | ~600 MB | `git clone https://huggingface.co/adithyamurali/GraspGenModels` |
+| `GraspGen/assets/` | ~15 MB | 原始 GraspGen 仓库自带（已加入 .gitignore） |
+| `checkpoints/*.pth` | ~220 MB | 训练自动生成（`runs/results_assignment/logs/`），已移至 `checkpoints/` |
+| `GraspGen/.venv/` | ~2 GB | `uv venv --python 3.10 .venv && uv pip install -e .` |
+| `GraspGen/pointnet2_ops/build/` | ~80 MB | `./install_uv_pointnet.sh` 编译生成 |
+| `GraspGen/runs/results_assignment/cache/` | ~120 MB | 训练首次运行时自动构建 |
+| `GraspGen/runs/results_assignment/logs/events.out.*` | ~8 MB | TensorBoard 事件文件 |
+
+> 以上文件将在最终提交时**单独压缩打包**，与代码一并提交。
+
+---
+
 ## 项目结构
 
 ```

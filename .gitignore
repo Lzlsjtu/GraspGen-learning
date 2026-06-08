@@ -23,7 +23,12 @@ GraspGen/pointnet2_ops/build/
 GraspGen/pointnet2_ops/dist/
 GraspGen/pointnet2_ops/*.egg-info/
 
-# 系统文件
-.DS_Store
-*.swp
-*.swo
+# 作业权重文件（太大，单独压缩上传）
+checkpoints/
+
+# plots（本地自动生成）
+analysis/plots/
+GraspGen/runs/results_assignment/training_plots/
+
+# TB events 大文件
+GraspGen/runs/results_assignment/logs/events.out.*
