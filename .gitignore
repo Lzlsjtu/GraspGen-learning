@@ -1,6 +1,9 @@
 # 数据集（太大，不上传）
 GraspGen_datasets/
 
+# 原始项目 assets（夹爪URDF/网格，非作业核心）
+GraspGen/assets/
+
 # Python 虚拟环境
 .venv/
 __pycache__/
