@@ -1,8 +1,11 @@
-# 数据集（太大，不上传）
+# 忽略归档文件
+_archive/
+
+# 数据集（太大，不上传，如需可单独下载）
 GraspGen_datasets/
 
-# 原始项目 assets（夹爪URDF/网格，非作业核心）
-GraspGen/assets/
+# 原始项目 assets（夹爪URDF/网格，非作业核心，官方可下载）
+graspgen_source/assets/
 
 # Python 虚拟环境
 .venv/
@@ -13,22 +16,32 @@ __pycache__/
 *.egg-info/
 
 # 模型 checkpoint（从 HuggingFace 下载）
-GraspGen/GraspGenModels/
+graspgen_source/GraspGenModels/checkpoints/
+graspgen_source/GraspGenModels/README.md
+graspgen_source/GraspGenModels/.gitattributes
 
 # 训练缓存（可重建）
-GraspGen/runs/results_assignment/cache/
+graspgen_source/runs/results_assignment/cache/
+assignment_code/training_scripts/cache/
 
 # pointnet2_ops 编译产物
-GraspGen/pointnet2_ops/build/
-GraspGen/pointnet2_ops/dist/
-GraspGen/pointnet2_ops/*.egg-info/
+graspgen_source/pointnet2_ops/build/
+graspgen_source/pointnet2_ops/dist/
+graspgen_source/pointnet2_ops/*.egg-info/
 
-# 作业权重文件（太大，单独压缩上传）
-checkpoints/
+# 训练过程数据（太大，单独压缩交付）
+training_data/
 
-# plots（本地自动生成）
-analysis/plots/
-GraspGen/runs/results_assignment/training_plots/
+# outputs 和 plots（训练自动生成）
+graspgen_source/runs/results_assignment/training_plots/
 
 # TB events 大文件
-GraspGen/runs/results_assignment/logs/events.out.*
+graspgen_source/runs/results_assignment/logs/events.out.*
+
+# IDE 临时文件
+.vscode/
+.idea/
+*.swp
+.DS_Store
+.claude/
+*.zip
