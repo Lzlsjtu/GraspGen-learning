@@ -6,7 +6,7 @@
 > 彩色图片已嵌入。建议 VS Code / Typora / Obsidian 预览后转 PPT。
 
 <div align="center">
-  <img src="../GraspGen/fig/cover.png" alt="GraspGen logo" width="780">
+  <img src="../graspgen_source/fig/cover.png" alt="GraspGen logo" width="780">
 </div>
 
 ---
@@ -14,7 +14,7 @@
 ## Slide 1｜封面：基于局部点云的 6-DOF 抓取位姿估计
 
 <div align="center">
-  <img src="../GraspGen/fig/montage2.png" alt="grasp montage" width="900">
+  <img src="../graspgen_source/fig/montage2.png" alt="grasp montage" width="900">
 </div>
 
 **框架：** NVIDIA GraspGen (ICRA 2026)  ·  Diffision  ·  PointNet  ·  SE(3)  ·  RGB-D  ·  Open3D
@@ -34,8 +34,8 @@
 <div align="center">
   <table>
     <tr>
-      <td align="center"><img src="../GraspGen/fig/radar.png" width="280"></td>
-      <td align="center"><img src="../GraspGen/fig/2.gif" width="380"></td>
+      <td align="center"><img src="../graspgen_source/fig/radar.png" width="280"></td>
+      <td align="center"><img src="../graspgen_source/fig/2.gif" width="380"></td>
     </tr>
   </table>
 </div>
@@ -62,20 +62,20 @@ GraspGen 是 NVIDIA 开源的扩散式 6-DOF 抓取框架。我们在此基础�
     <tr>
       <td align="center" style="padding:8px">
         <b>Scene Point Cloud</b><br/>
-        <img src="../GraspGen/fig/pc/scene2.png" width="400">
+        <img src="../graspgen_source/fig/pc/scene2.png" width="400">
       </td>
       <td align="center" style="padding:8px">
         <b>Collision Check</b><br/>
-        <img src="../GraspGen/fig/pc/collision1.png" width="400">
+        <img src="../graspgen_source/fig/pc/collision1.png" width="400">
       </td>
     </tr>
   </table>
 </div>
 
 <div align="center">
-  <img src="../GraspGen/fig/pc/collision2.png" width="280">
-  <img src="../GraspGen/fig/pc/collision3.png" width="280">
-  <img src="../GraspGen/fig/pc/collision5.png" width="280">
+  <img src="../graspgen_source/fig/pc/collision2.png" width="280">
+  <img src="../graspgen_source/fig/pc/collision3.png" width="280">
+  <img src="../graspgen_source/fig/pc/collision5.png" width="280">
 </div>
 
 <span style="color:#22c55e">**绿色夹爪 = 碰撞通过**</span>&emsp;&emsp;<span style="color:#ef4444">**红色夹爪 = 碰撞**</span>
@@ -89,7 +89,7 @@ GraspGen 是 NVIDIA 开源的扩散式 6-DOF 抓取框架。我们在此基础�
 
 ## Slide 4｜GraspNet 风格投影渲染：我们的 Demo 数据生成
 
-> 脚本: `Test_pipeline/render_demo_rgbd.py`
+> 脚本: `assignment_code/Test_pipeline/render_demo_rgbd.py`
 
 <div align="center">
   <table>
@@ -99,9 +99,9 @@ GraspGen 是 NVIDIA 开源的扩散式 6-DOF 抓取框架。我们在此基础�
       <td align="center"><b>原始场景 RGB (1280×720)</b></td>
     </tr>
     <tr>
-      <td><img src="../Test_pipeline/outputs/demo_rgbd/demo_depth_mm.png" width="260"></td>
-      <td><img src="../Test_pipeline/outputs/demo_rgbd/demo_depth_overlay.png" width="260"></td>
-      <td><img src="../Test_pipeline/outputs/demo_rgbd/demo_rgb_original.png" width="260"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/demo_rgbd/demo_depth_mm.png" width="260"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/demo_rgbd/demo_depth_overlay.png" width="260"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/demo_rgbd/demo_rgb_original.png" width="260"></td>
     </tr>
   </table>
 </div>
@@ -139,7 +139,7 @@ f_x & 0 & c_x \\
 \end{bmatrix}
 \]
 
-**代码位置：** `Test_pipeline/preprocess.py::depth_image_to_point_cloud()` 和 `render_demo_rgbd.py`
+**代码位置：** `assignment_code/Test_pipeline/preprocess.py::depth_image_to_point_cloud()` 和 `render_demo_rgbd.py`
 
 **关键参数（RealSense D435）：**
 - fx=591.0, fy=590.6
@@ -276,7 +276,7 @@ GraspNet 17 列评估格式：
 ## Slide 10｜坐标系约定与 GraspNet 对接
 
 <div align="center">
-  <img src="../GraspGen/fig/graspgen_coordinate_convention.png" width="600">
+  <img src="../graspgen_source/fig/graspgen_coordinate_convention.png" width="600">
 </div>
 
 **Franka Panda 夹爪坐标:**
@@ -296,7 +296,7 @@ GraspNet 17 列评估格式：
 
 ## Slide 11｜GraspNet 风格投影渲染（技术细节）
 
-> 脚本: `Test_pipeline/render_demo_rgbd.py`
+> 脚本: `assignment_code/Test_pipeline/render_demo_rgbd.py`
 
 **输入：**
 - 官方 demo 场景 JSON → `scene_info.full_pc` (N×3 相机坐标系点云)
@@ -318,9 +318,9 @@ v = \text{int}\left( \frac{f_y \cdot Y}{Z} + c_y \right)
       <td align="center"><b>Original RGB (1280×720)</b></td>
     </tr>
     <tr>
-      <td><img src="../Test_pipeline/outputs/demo_rgbd/demo_depth_mm.png" width="260"></td>
-      <td><img src="../Test_pipeline/outputs/demo_rgbd/demo_depth_overlay.png" width="260"></td>
-      <td><img src="../Test_pipeline/outputs/demo_rgbd/demo_rgb_original.png" width="260"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/demo_rgbd/demo_depth_mm.png" width="260"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/demo_rgbd/demo_depth_overlay.png" width="260"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/demo_rgbd/demo_rgb_original.png" width="260"></td>
     </tr>
   </table>
 </div>
@@ -328,7 +328,7 @@ v = \text{int}\left( \frac{f_y \cdot Y}{Z} + c_y \right)
 **投影验证：将场景点云 (3D) 反投影回像素平面，覆盖在原始 RGB 和 Depth 上验证一致性：**
 
 <div align="center">
-  <img src="../Test_pipeline/outputs/demo_rgbd/demo_projection_verify.png" width="860">
+  <img src="../assignment_code/Test_pipeline/outputs/demo_rgbd/demo_projection_verify.png" width="860">
 </div>
 
 **数据出处 (可录制 demo 视频) — 同一场景 JSON 的完整输出：**
@@ -336,13 +336,13 @@ v = \text{int}\left( \frac{f_y \cdot Y}{Z} + c_y \right)
 | 序号 | 类型 | 文件路径 | 说明 |
 |---|---|---|---|
 | 1 | 场景 JSON | `GraspGen/GraspGenModels/sample_data/real_scene_pc/1745766797_642935.json` | 官方 demo 场景 |
-| 2 | 物体点云 PLY | `Test_pipeline/outputs/demo_rgbd/demo_object.ply` | 6324 pts, 彩色，来自 object_info.pc+pc_color |
-| 3 | 场景点云 PLY | `Test_pipeline/outputs/demo_rgbd/demo_scene.ply` | 30k pts, 彩色，来自 full_pc+img_color (像素级) |
-| 4 | RGB 原图 | `Test_pipeline/outputs/demo_rgbd/demo_rgb_original.png` | 1280×720 全分辨率 |
-| 5 | Depth 原图 | `Test_pipeline/outputs/demo_rgbd/demo_depth_mm.png` | 16-bit mm 深度 |
-| 6 | Depth Overlay | `Test_pipeline/outputs/demo_rgbd/demo_depth_overlay.png` | RGB+深度叠加 |
-| 7 | 投影验证 | `Test_pipeline/outputs/demo_rgbd/demo_projection_verify.png` | 3D→2D 映射验证 |
-| 8 | 抓取可视化 | `Test_pipeline/outputs/eval_real_scenes/eval_1745766797_642935_*.png` | front/side/top 三视角 |
+| 2 | 物体点云 PLY | `assignment_code/Test_pipeline/outputs/demo_rgbd/demo_object.ply` | 6324 pts, 彩色，来自 object_info.pc+pc_color |
+| 3 | 场景点云 PLY | `assignment_code/Test_pipeline/outputs/demo_rgbd/demo_scene.ply` | 30k pts, 彩色，来自 full_pc+img_color (像素级) |
+| 4 | RGB 原图 | `assignment_code/Test_pipeline/outputs/demo_rgbd/demo_rgb_original.png` | 1280×720 全分辨率 |
+| 5 | Depth 原图 | `assignment_code/Test_pipeline/outputs/demo_rgbd/demo_depth_mm.png` | 16-bit mm 深度 |
+| 6 | Depth Overlay | `assignment_code/Test_pipeline/outputs/demo_rgbd/demo_depth_overlay.png` | RGB+深度叠加 |
+| 7 | 投影验证 | `assignment_code/Test_pipeline/outputs/demo_rgbd/demo_projection_verify.png` | 3D→2D 映射验证 |
+| 8 | 抓取可视化 | `assignment_code/Test_pipeline/outputs/eval_real_scenes/eval_1745766797_642935_*.png` | front/side/top 三视角 |
 | 9 | 碰撞检测 | `GraspGen/fig/pc/collision1-5.png` | 官方碰撞检测截图 |
 
 **一个场景 → 九类输出全部互相匹配。** 所有文件都来自同一个 JSON，可直接用于录视频展示。
@@ -355,8 +355,8 @@ v = \text{int}\left( \frac{f_y \cdot Y}{Z} + c_y \right)
 ## Slide 12｜碰撞检测与几何可执行性
 
 <center>
-  <img src="../GraspGen/fig/pc/collision4.png" width="400" style="border:3px solid #ef4444">
-  <img src="../GraspGen/fig/pc/collision5.png" width="400" style="border:3px solid #22c55e">
+  <img src="../graspgen_source/fig/pc/collision4.png" width="400" style="border:3px solid #ef4444">
+  <img src="../graspgen_source/fig/pc/collision5.png" width="400" style="border:3px solid #22c55e">
 </center>
 
 **流程：**
@@ -383,9 +383,9 @@ v = \text{int}\left( \frac{f_y \cdot Y}{Z} + c_y \right)
       <td align="center"><b>Top</b></td>
     </tr>
     <tr>
-      <td><img src="../Test_pipeline/outputs/eval_real_scenes/eval_1745766797_642935_front.png" width="270"></td>
-      <td><img src="../Test_pipeline/outputs/eval_real_scenes/eval_1745766797_642935_side.png" width="270"></td>
-      <td><img src="../Test_pipeline/outputs/eval_real_scenes/eval_1745766797_642935_top.png" width="270"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/eval_real_scenes/eval_1745766797_642935_front.png" width="270"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/eval_real_scenes/eval_1745766797_642935_side.png" width="270"></td>
+      <td><img src="../assignment_code/Test_pipeline/outputs/eval_real_scenes/eval_1745766797_642935_top.png" width="270"></td>
     </tr>
   </table>
 </div>
